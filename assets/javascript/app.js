@@ -2,12 +2,12 @@
 var topics = ['fairy', 'dragon', 'troll'];
 
 // Function to clear gifs
-function clearGifs () {
+function clearGifs() {
     $('#pictures-div').empty();
 };
 
 // Function to search Giphy API using ajax and passing it to the DOM
-function displayGiphy () {
+function displayGiphy() {
     var giphy = $(this).attr('button-name');
     var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + giphy + '&api_key=HY47GKI5iqOwzCMpbRF5QWlTWx4IbYO3&limit=10';
 
@@ -17,7 +17,11 @@ function displayGiphy () {
     }).then(function(response) {
         console.log(response);
         //$('#pictures-div').text(JSON.stringify(response));
+
+        // Clearing Gifs before displaying responses from a new ajax call
         clearGifs();
+
+        // Loop to display each gif from the Giphy response array, assigning attributes, and writing to the DOM
         for (var g = 0; g < response.data.length; g++) {
 
             // Creating div for each gif
@@ -26,7 +30,7 @@ function displayGiphy () {
             // Append to the DOM
             $('#pictures-div').append(gifDiv);
 
-            // Sotring result of each gif's rating
+            // Storing result of each gif's rating
             var rating = response.data[g].rating;
 
             // Creating paragraph tag with result of gif's rating
@@ -34,14 +38,19 @@ function displayGiphy () {
 
             // Retrieving URL for the image
             var imgURL = response.data[g].images.fixed_width_still.url;
+            var dataStill = response.data[g].images.fixed_width_still.url;
+            var dataAnimate = response.data[g].images.fixed_width.url;
             
-            // Element ot hold image
-            var gifElement = $('<img>').attr('src', imgURL);
+            // Element to hold image with still and animated attributes
+            var gifElement = $('<img>', {class:'gif'});
+            gifElement.attr('src', imgURL);
+            gifElement.attr('data-still', dataStill);
+            gifElement.attr('data-animate', dataAnimate);
+            gifElement.attr('data-state', 'still');
             
             // Append to the gif divs
             gifDiv.append(gifElement);
             gifDiv.append(ratingText);
-            
         }
     });
 }
@@ -73,16 +82,18 @@ $('#btn-form').submit(function(event) {
 $(document).on('click', '.btn-secondary', displayGiphy);
 makeBtn();
 
-
-
-
-
-
-
-
-//Key: HY47GKI5iqOwzCMpbRF5QWlTWx4IbYO3
- /*var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=YOUR_API_KEY&limit=5");
-xhr.done(function(data) { console.log("success got data", data); });*/
+// Animating gifs on clicks
+$(document).on('click', '.gif', function() {
+    // Saves the current state of the gif
+    var state = $(this).attr('data-state');
     
-    
-    
+    // Checks to see what the current data state is.  If the data state is still, set the attribute to animate and use the animated source url. Else, if the data state is animate, set the attribute to still and use the still source url.
+
+    if (state === 'still') {
+        $(this).attr('src', $(this).attr('data-animate'));
+        $(this).attr('data-state', 'animate');
+    } else {
+        $(this).attr('src', $(this).attr('data-still'));
+        $(this).attr('data-state', 'still');
+    }
+});
