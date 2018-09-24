@@ -4,9 +4,13 @@ GATech Coding Bootcamp Homework: GifTastic GIPHY API
 This is the README file for the GATech Coding Bootcamp Homework: GifTastic.  
 
 Application Title: GIF Tastic
+
 Website: https://rosyming.github.io/GifTastic/
+
 GitHub Repository: https://github.com/rosyming/GifTastic
+
 Last updated: 9/23/18
+
 Author: Mary Nguyen
 
 Technology stack and web development techniques: HTML, CSS, Bootstrap, JavaScript, JQuery, Ajax, and API pulls.
