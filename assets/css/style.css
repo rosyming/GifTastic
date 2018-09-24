@@ -1,7 +1,25 @@
+.jumbotron {
+    height: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: white;
+}
+
 .card {
     margin-bottom: 25px;
 }
 
 .btn {
     margin-right: 10px;
+    margin-bottom: 10px;
 }
+
+#gif-div {
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+}
+
+.img-responsive {
+    display: center;
+  }

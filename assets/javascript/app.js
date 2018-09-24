@@ -1,5 +1,5 @@
 // Initial array of items
-var topics = ['fairy', 'dragon', 'troll'];
+var topics = ['fairy', 'dragon', 'goblin'];
 
 // Function to clear gifs
 function clearGifs() {
@@ -42,7 +42,7 @@ function displayGiphy() {
             var dataAnimate = response.data[g].images.fixed_width.url;
             
             // Element to hold image with still and animated attributes
-            var gifElement = $('<img>', {class:'gif'});
+            var gifElement = $('<img>', {class:'gif img-responsive'});
             gifElement.attr('src', imgURL);
             gifElement.attr('data-still', dataStill);
             gifElement.attr('data-animate', dataAnimate);
@@ -76,6 +76,7 @@ $('#btn-form').submit(function(event) {
     topics.push(btnName);
     console.log(topics);
     makeBtn();
+    $("#btn-form")[0].reset();
 });
 
 // Event when buttons are clicked

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <title>GifTastic</title>
+    <title>GIF Tastic</title>
 
     
 
@@ -16,6 +16,13 @@
 
 <div class="container">
 
+    <!-- Jumbotron -->
+    <div class="jumbotron border">
+        <h1 class="display-4 text-center">GIF Tastic!</h1>
+        <p class="lead">This is a simple app for finding GIFs from GIPHY.</p>
+        <hr class="my-4">
+        <p>Click on a button to load GIFs. New buttons can be created that will find GIFs with the same button name. Have fun!</p>
+    </div>
 
     <!-- Div for buttons to populate -->
     <div class="card">
@@ -30,10 +37,10 @@
     <div class="row">
         <div class="col-sm-8">
             <div class="card">
-                <div class="card-header">Gifs</div>   
+                <div class="card-header">GIFs</div>   
 
                 <div class="card-body">
-                    <div id="pictures-div"></div>
+                    <div id="pictures-div" class="row text-center"></div>
                 </div>
             </div>
         </div>
@@ -56,16 +63,6 @@
     </div>
 </div>
      
-    
-
-   
-</div>
-
-
-
-
-
-
 <!-- Added link to the jQuery Library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="assets/javascript/app.js"></script> 
